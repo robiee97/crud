@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -20,6 +21,12 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         User user = userService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @GetMapping("/youtube")
+    public RedirectView redirectToYoutube() {
+        // Create a RedirectView with the target URL (YouTube's homepage).
+        // This will issue an HTTP 302 (Found) redirect to the client.
+        return new RedirectView("[https://www.youtube.com](https://www.youtube.com)");
     }
 
     @GetMapping("/")
