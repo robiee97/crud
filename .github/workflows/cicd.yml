@@ -51,7 +51,7 @@ jobs:
 
       - name: Deploy using Helm
         run: |
-          helm upgrade --install my-release ./helm/my-chart \
+          helm upgrade --install my-release ./crud-app \
             --set image.repository=$AZURE_CONTAINER_REGISTRY/$IMAGE_NAME \
             --set image.tag=${{ github.sha }} \
             --set service.type=LoadBalancer
